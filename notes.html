@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notes - Student Life Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <!-- Loading Screen -->
+  <div class="loading-screen" id="loadingScreen">
+    <div class="loader"></div>
+    <p>Loading...</p>
+  </div>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <i class="fas fa-graduation-cap"></i>
+      <span>Student Life</span>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="nav-link">
+        <i class="fas fa-home"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="courses.html" class="nav-link">
+        <i class="fas fa-book"></i>
+        <span>Courses</span>
+      </a>
+      <a href="assignments.html" class="nav-link">
+        <i class="fas fa-tasks"></i>
+        <span>Assignments</span>
+      </a>
+      <a href="schedule.html" class="nav-link">
+        <i class="fas fa-calendar-alt"></i>
+        <span>Schedule</span>
+      </a>
+      <a href="finance.html" class="nav-link">
+        <i class="fas fa-wallet"></i>
+        <span>Finance</span>
+      </a>
+      <a href="notes.html" class="nav-link active">
+        <i class="fas fa-sticky-note"></i>
+        <span>Notes</span>
+      </a>
+      <a href="settings.html" class="nav-link">
+        <i class="fas fa-cog"></i>
+        <span>Settings</span>
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <button class="sidebar-toggle" id="sidebarToggle">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="main-wrapper">
+    <!-- Top Navbar -->
+    <header class="top-navbar">
+      <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="Search notes..." id="searchInput">
+      </div>
+      <div class="navbar-actions">
+        <div class="notification-wrapper">
+          <button class="notification-btn" id="notificationBtn">
+            <i class="fas fa-bell"></i>
+            <span class="notification-badge" id="notificationBadge">3</span>
+          </button>
+          <div class="notification-dropdown" id="notificationDropdown">
+            <div class="dropdown-header">
+              <h4>Notifications</h4>
+              <button class="mark-read">Mark all as read</button>
+            </div>
+            <div class="notification-list" id="notificationList"></div>
+          </div>
+        </div>
+        <div class="user-profile">
+          <img src="https://ui-avatars.com/api/?name=Student&background=10b981&color=fff" alt="User" class="avatar">
+          <span class="user-name" id="userName">Student</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="page-header">
+        <div>
+          <h1>Notes</h1>
+          <p>Capture your ideas and thoughts</p>
+        </div>
+        <button class="btn-primary" id="addNoteBtn">
+          <i class="fas fa-plus"></i> New Note
+        </button>
+      </div>
+
+      <!-- Notes Grid -->
+      <div class="notes-grid" id="notesGrid">
+        <!-- Notes will be loaded here -->
+      </div>
+
+      <div class="empty-state" id="emptyNotes" style="display: none;">
+        <i class="fas fa-sticky-note"></i>
+        <p>No notes yet. Create your first note!</p>
+      </div>
+    </main>
+  </div>
+
+  <!-- Add Note Modal -->
+  <div class="modal" id="noteModal">
+    <div class="modal-overlay"></div>
+    <div class="modal-content modal-large">
+      <div class="modal-header">
+        <h2 id="noteModalTitle">New Note</h2>
+        <button class="modal-close" id="closeNoteModal">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <form id="noteForm">
+        <div class="form-group">
+          <label for="noteTitle">Title</label>
+          <input type="text" id="noteTitle" required placeholder="Note title...">
+        </div>
+        <div class="form-group">
+          <label for="noteContent">Content</label>
+          <textarea id="noteContent" rows="10" required placeholder="Write your note here..."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="noteColor">Color</label>
+          <div class="color-picker">
+            <input type="radio" name="noteColor" value="#ffffff" id="colorWhite" checked>
+            <label for="colorWhite" class="color-option"
+              style="background: #ffffff; border: 1px solid #e0e0e0;"></label>
+
+            <input type="radio" name="noteColor" value="#fef3c7" id="colorYellow">
+            <label for="colorYellow" class="color-option" style="background: #fef3c7;"></label>
+
+            <input type="radio" name="noteColor" value="#d1fae5" id="colorGreen">
+            <label for="colorGreen" class="color-option" style="background: #d1fae5;"></label>
+
+            <input type="radio" name="noteColor" value="#dbeafe" id="colorBlue">
+            <label for="colorBlue" class="color-option" style="background: #dbeafe;"></label>
+
+            <input type="radio" name="noteColor" value="#fce7f3" id="colorPink">
+            <label for="colorPink" class="color-option" style="background: #fce7f3;"></label>
+
+            <input type="radio" name="noteColor" value="#ede9fe" id="colorPurple">
+            <label for="colorPurple" class="color-option" style="background: #ede9fe;"></label>
+          </div>
+        </div>
+        <input type="hidden" id="noteId">
+        <div class="form-actions">
+          <button type="button" class="btn-secondary" id="cancelNote">Cancel</button>
+          <button type="submit" class="btn-primary">Save Note</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      initNotes();
+    });
+  </script>
+</body>
+
+</html>

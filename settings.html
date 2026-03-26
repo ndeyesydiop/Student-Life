@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings - Student Life Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <!-- Loading Screen -->
+  <div class="loading-screen" id="loadingScreen">
+    <div class="loader"></div>
+    <p>Loading...</p>
+  </div>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <i class="fas fa-graduation-cap"></i>
+      <span>Student Life</span>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="nav-link">
+        <i class="fas fa-home"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="courses.html" class="nav-link">
+        <i class="fas fa-book"></i>
+        <span>Courses</span>
+      </a>
+      <a href="assignments.html" class="nav-link">
+        <i class="fas fa-tasks"></i>
+        <span>Assignments</span>
+      </a>
+      <a href="schedule.html" class="nav-link">
+        <i class="fas fa-calendar-alt"></i>
+        <span>Schedule</span>
+      </a>
+      <a href="finance.html" class="nav-link">
+        <i class="fas fa-wallet"></i>
+        <span>Finance</span>
+      </a>
+      <a href="notes.html" class="nav-link">
+        <i class="fas fa-sticky-note"></i>
+        <span>Notes</span>
+      </a>
+      <a href="settings.html" class="nav-link active">
+        <i class="fas fa-cog"></i>
+        <span>Settings</span>
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <button class="sidebar-toggle" id="sidebarToggle">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="main-wrapper">
+    <!-- Top Navbar -->
+    <header class="top-navbar">
+      <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="Search..." id="searchInput">
+      </div>
+      <div class="navbar-actions">
+        <div class="notification-wrapper">
+          <button class="notification-btn" id="notificationBtn">
+            <i class="fas fa-bell"></i>
+            <span class="notification-badge" id="notificationBadge">3</span>
+          </button>
+          <div class="notification-dropdown" id="notificationDropdown">
+            <div class="dropdown-header">
+              <h4>Notifications</h4>
+              <button class="mark-read">Mark all as read</button>
+            </div>
+            <div class="notification-list" id="notificationList"></div>
+          </div>
+        </div>
+        <div class="user-profile">
+          <img src="https://ui-avatars.com/api/?name=Student&background=10b981&color=fff" alt="User" class="avatar"
+            id="userAvatar">
+          <span class="user-name" id="userName">Student</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="page-header">
+        <h1>Settings</h1>
+        <p>Manage your preferences</p>
+      </div>
+
+      <div class="settings-grid">
+        <!-- Profile Settings -->
+        <div class="card settings-card">
+          <div class="card-header">
+            <h2><i class="fas fa-user"></i> Profile Settings</h2>
+          </div>
+          <div class="card-content">
+            <form id="profileForm">
+              <div class="profile-avatar">
+                <img src="https://ui-avatars.com/api/?name=Student&background=10b981&color=fff&size=100" alt="Avatar"
+                  id="settingsAvatar">
+              </div>
+              <div class="form-group">
+                <label for="settingsName">Full Name</label>
+                <input type="text" id="settingsName" placeholder="Enter your name">
+              </div>
+              <div class="form-group">
+                <label for="settingsEmail">Email</label>
+                <input type="email" id="settingsEmail" placeholder="Enter your email">
+              </div>
+              <button type="submit" class="btn-primary">
+                <i class="fas fa-save"></i> Save Profile
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Appearance -->
+        <div class="card settings-card">
+          <div class="card-header">
+            <h2><i class="fas fa-palette"></i> Appearance</h2>
+          </div>
+          <div class="card-content">
+            <div class="setting-item">
+              <div class="setting-info">
+                <h3>Dark Mode</h3>
+                <p>Switch between light and dark themes</p>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="darkModeToggle">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="setting-item">
+              <div class="setting-info">
+                <h3>Compact Sidebar</h3>
+                <p>Show icons only in sidebar</p>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="compactSidebar">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Notifications -->
+        <div class="card settings-card">
+          <div class="card-header">
+            <h2><i class="fas fa-bell"></i> Notifications</h2>
+          </div>
+          <div class="card-content">
+            <div class="setting-item">
+              <div class="setting-info">
+                <h3>Assignment Reminders</h3>
+                <p>Get notified about upcoming assignments</p>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="assignmentNotif" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="setting-item">
+              <div class="setting-info">
+                <h3>Class Reminders</h3>
+                <p>Get notified before classes start</p>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="classNotif" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Data Management -->
+        <div class="card settings-card">
+          <div class="card-header">
+            <h2><i class="fas fa-database"></i> Data Management</h2>
+          </div>
+          <div class="card-content">
+            <div class="setting-item">
+              <div class="setting-info">
+                <h3>Export Data</h3>
+                <p>Download all your data as JSON</p>
+              </div>
+              <button class="btn-secondary" id="exportData">
+                <i class="fas fa-download"></i> Export
+              </button>
+            </div>
+            <div class="setting-item danger">
+              <div class="setting-info">
+                <h3>Clear All Data</h3>
+                <p>Permanently delete all your data</p>
+              </div>
+              <button class="btn-danger" id="clearAllData">
+                <i class="fas fa-trash"></i> Clear Data
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      initSettings();
+    });
+  </script>
+</body>
+
+</html>
